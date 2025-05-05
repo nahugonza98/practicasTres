@@ -101,7 +101,7 @@ function App() {
 
   // RENDER
   return (
-    <div className="h-screen bg-[#E0F7FA] flex items-center justify-center px-4 font-roboto">
+    <div className="h-screen w-screen bg-[#E0F7FA] flex items-center justify-center px-4 font-roboto">
       {!loggedIn ? (
         <div className="animate-fade">
           <LoginForm
