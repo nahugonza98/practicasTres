@@ -13,7 +13,7 @@ function App() {
   const [errorPass, setErrorPass] = useState('');
   const [installPromptEvent, setInstallPromptEvent] = useState(null);
   const [showInstallButton, setShowInstallButton] = useState(false);
-  
+
 
 
   // Estado para datos del QR
@@ -57,12 +57,12 @@ function App() {
       setInstallPromptEvent(e); // Guardamos el evento
       setShowInstallButton(true); // Mostramos el botón
     };
-  
+
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-  
+
     return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
   }, []);
-  
+
   // FUNCIÓN de login (simulada)
   const handleLogin = (e) => {
     e.preventDefault();
@@ -112,6 +112,9 @@ function App() {
             handleLogin={handleLogin}
             errorDni={errorDni}
             errorPass={errorPass}
+            showInstallButton={showInstallButton}
+            installPromptEvent={installPromptEvent}
+            setShowInstallButton={setShowInstallButton}
           />
 
         </div>
@@ -122,6 +125,9 @@ function App() {
             datosQR={datosQR}
             contador={contador}
             handleLogout={handleLogout}
+            installPromptEvent={installPromptEvent}
+            showInstallButton={showInstallButton}
+            setShowInstallButton={setShowInstallButton}
           />
         </div>
       )}

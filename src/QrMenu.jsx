@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import QRCode from 'react-qr-code';
 
-function QrMenu({ dni, datosQR, contador, handleLogout }) {
+function QrMenu({ dni, datosQR, contador, handleLogout, installPromptEvent, showInstallButton, setShowInstallButton  }) {
   // Estado que activa la animación cada vez que se actualiza el QR
   const [animarQR, setAnimarQR] = useState(false);
 
@@ -42,26 +42,7 @@ function QrMenu({ dni, datosQR, contador, handleLogout }) {
       <p className="text-sm text-[#003f5c]">
         Actualización en: <span className="font-bold">{contador}</span> segundos
       </p>
-{/* BOTON DE INSTALACION */}
 
-{showInstallButton && (
-  <button
-    onClick={() => {
-      installPromptEvent.prompt(); // Lanza el modal
-      installPromptEvent.userChoice.then((choice) => {
-        if (choice.outcome === 'accepted') {
-          console.log('Instalación aceptada');
-        } else {
-          console.log('Instalación cancelada');
-        }
-        setShowInstallButton(false); // Ocultamos el botón
-      });
-    }}
-    className="mt-2 bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md shadow-md transition-all duration-300"
-  >
-    Instalar aplicación
-  </button>
-)}
 
       {/* BOTÓN DE CERRAR SESIÓN */}
       <button

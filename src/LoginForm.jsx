@@ -1,7 +1,7 @@
 // LoginForm.jsx
 import React from 'react';
 
-function LoginForm({ dni, setDni, password, setPassword, handleLogin, errorDni, errorPass }) {
+function LoginForm({ dni, setDni, password, setPassword, handleLogin, errorDni, errorPass, installPromptEvent, showInstallButton, setShowInstallButton }) {
   return (
     <div className="bg-white p-10 rounded-3xl shadow-xl w-full max-w-sm text-center">
       {/* LOGO */}
@@ -48,6 +48,7 @@ function LoginForm({ dni, setDni, password, setPassword, handleLogin, errorDni, 
   {errorPass && <p className="text-sm text-red-600 mt-1">{errorPass}</p>}
 </div>
 
+
         <button
           type="submit"
           className="active:scale-95
@@ -55,7 +56,29 @@ function LoginForm({ dni, setDni, password, setPassword, handleLogin, errorDni, 
           >
           Iniciar sesión
         </button>
+
+       
       </form>
+       {/* BOTON DE INSTALACION */}
+
+ {showInstallButton && (
+  <button
+    onClick={() => {
+      installPromptEvent.prompt(); // Lanza el modal
+      installPromptEvent.userChoice.then((choice) => {
+        if (choice.outcome === 'accepted') {
+          console.log('Instalación aceptada');
+        } else {
+          console.log('Instalación cancelada');
+        }
+        setShowInstallButton(false); // Ocultamos el botón
+      });
+    }}
+    className="mt-2 bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md shadow-md transition-all duration-300"
+  >
+    Instalar aplicación
+  </button>
+)}
     </div>
   );
 }
