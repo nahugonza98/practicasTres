@@ -23,9 +23,9 @@ function App() {
   });
 
   // Estado para el contador visual de actualización
-  const [contador, setContador] = useState(5);
+  const [contador, setContador] = useState(60);
 
-  // 🔁 EFECTO UNIFICADO para manejar contador + actualización del QR
+  //EFECTO UNIFICADO para manejar contador + actualización del QR
   useEffect(() => {
     if (loggedIn) {
       const interval = setInterval(() => {
@@ -37,7 +37,7 @@ function App() {
               dni: dni,
               timestamp: new Date().toISOString()
             });
-            return 5;
+            return 60;
           } else {
             // Si no, seguimos bajando
             return prev - 1;
